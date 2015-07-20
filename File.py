@@ -3,15 +3,14 @@
 
 import sys
 
-class File(object):
+class ManageFile(object):
 
-    def __init__():
-        file_merged = sys.args[0]
-        print(file_merged)
+    def __init__(self, fm, ff, sf):
+
+        self.file_merged = fm
+        self.first_file = ff
+        self.second_file = sf
 
     def main():
+
         print(self.file_merged)
-
-
-if __name__ == '__main__':
-    main()
