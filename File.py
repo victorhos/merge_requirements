@@ -11,6 +11,25 @@ class ManageFile(object):
         self.first_file = ff
         self.second_file = sf
 
-    def main():
+    def open_file(self):
 
+        try:
+            open()
+        except:
+            pass
+
+
+    def print(self):
         print(self.file_merged)
+        print(self.first_file)
+        print(self.second_file)
+
+class Merge(object):
+
+    def __init__(self, mf):
+
+        self.menage_file = mf
+
+    def open_files():
+
+        self.mf
