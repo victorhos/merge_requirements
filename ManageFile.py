@@ -2,22 +2,24 @@
 # encoding: utf-8
 
 import sys
+import logging
 
 class ManageFile(object):
 
     def __init__(self, fm, ff, sf):
 
-        self.file_merged = fm
-        self.first_file = ff
-        self.second_file = sf
+        self.file_merged = open_file(fm)
+        self.first_file = open_file(ff)
+        self.second_file = open_file(sf)
 
-    def open_file(self):
+    def open_file(self, file):
+
+        temporary_file = ''
 
         try:
-            open()
-        except:
-            pass
-
+            open(file, 'rw')
+        except Exception as e:
+            return logging.error(e)
 
     def print(self):
         print(self.file_merged)
