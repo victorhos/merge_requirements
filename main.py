@@ -31,7 +31,7 @@ def main():
         args.second_file
     )
 
-    files.print()
+    files.see()
 
 if __name__ == '__main__':
     main()

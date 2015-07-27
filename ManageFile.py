@@ -2,7 +2,10 @@
 # encoding: utf-8
 
 import sys
+import os
 import logging
+
+CURRENT_DIRECTORY = os.getcwd()
 
 class ManageFile(object):
 
@@ -17,11 +20,12 @@ class ManageFile(object):
         temporary_file = ''
 
         try:
+            path_file = '{}{}'.format(CURRENT_DIRECTORY, file)
             open(file, 'rw')
         except Exception as e:
             return logging.error(e)
 
-    def print(self):
+    def see(self):
         print(self.file_merged)
         print(self.first_file)
         print(self.second_file)
