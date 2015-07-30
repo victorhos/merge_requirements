@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import mock
 import unittest
 import builtins
 from utils import remove_comments
