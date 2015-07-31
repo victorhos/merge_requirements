@@ -5,7 +5,7 @@ import mock
 import unittest
 import builtins
 
-from merge_requirements.utils import remove_comments
+from utils import remove_comments
 
 class TestUtils(unittest.TestCase):
 
