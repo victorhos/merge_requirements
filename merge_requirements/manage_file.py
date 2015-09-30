@@ -4,24 +4,26 @@
 import sys
 import os
 import logging
+from utils import remove_comments
 
 CURRENT_DIRECTORY = os.getcwd()
+DIR = os.path.dirname(os.path.realpath(__file__))
 
 class ManageFile(object):
 
     def __init__(self, fm, ff, sf):
 
-        self.file_merged = open_file(fm)
-        self.first_file = open_file(ff)
-        self.second_file = open_file(sf)
+        self.file_merged = self.open_file(fm)
+        self.first_file = self.open_file(ff)
+        self.second_file = self.open_file(sf)
 
     def open_file(self, file):
 
-        temporary_file = ''
-
         try:
+
             path_file = '{}{}'.format(CURRENT_DIRECTORY, file)
-            open(file, 'rw')
+            return open(file, 'r')
+
         except Exception as e:
             return logging.error(e)
 
@@ -29,6 +31,7 @@ class ManageFile(object):
         print(self.file_merged)
         print(self.first_file)
         print(self.second_file)
+        import ipdb; ipdb.set_trace()
 
 class Merge(object):
 

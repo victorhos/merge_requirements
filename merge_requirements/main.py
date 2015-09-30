@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 import argparse
-from File import ManageFile
+from manage_file import ManageFile
 
 parser = argparse.ArgumentParser()
 
@@ -13,12 +13,12 @@ parser.add_argument(
 
 parser.add_argument(
     'first_file',
-    help='file with two merged files'
+    help='first file to merged'
 )
 
 parser.add_argument(
     'second_file',
-    help='file with two merged files'
+    help='second file to merged'
 )
 
 args = parser.parse_args()
