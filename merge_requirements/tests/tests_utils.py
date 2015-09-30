@@ -19,10 +19,16 @@ class TestUtils(unittest.TestCase):
 'CherryPy==3.2.4\nDjango==1.4.13\nIPTCInfo==1.9.5-6\nIon==0.6.4.2\nJinja2==2.7\nMarkupSafe==0.18\nMySQL-python==1.2.3\nPIL==1.1.7-1\nPillow==2.1.0\nRoutes==2.0\nSQLAlchemy==0.5.8\nSouth==0.7.3\n
         '''
 
-        self.assertEqual(
-            remove_comments(text_file),
-            expected_text_file
-        )
+        with patch.object(
+            builtins,
+            'open',
+            mock_open(read_data=text_file)):
+
+            with open('foo') as handle:
+                self.assertEqual(
+                    remove_comments(handle.read()),
+                    expected_text_file
+                )
 
 if __name__ == '__main__':
-    main()
+    unittest.main()

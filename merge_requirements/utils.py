@@ -3,11 +3,11 @@
 
 import re
 
-def remove_comments(file):
+def remove_comments(text):
 
     regex = re.compile( '^#.*\n', re.M )
 
     return regex.sub(
         '',
-        file.read()
+        text
     )
