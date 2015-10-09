@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import mock
-import unittest
-import builtins
-
+from unittest import TestCase
+from unittest.mock import MagicMock
 from utils import remove_comments
 
-class TestUtils(unittest.TestCase):
+class TestUtils(TestCase):
 
     def test_remove_comments(self):
 
@@ -18,7 +16,6 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(
             remove_comments(text_file),
             expected_text_file,
-            'okkkk'
         )
 
 if __name__ == '__main__':
