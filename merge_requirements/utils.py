@@ -5,9 +5,12 @@ import re
 
 def remove_comments(text):
 
-    regex = re.compile( '#+.*?\\n', re.M | re.S)
+    #remove comments
+    rx_comments = re.compile( '#+.*?\\n', re.M | re.S)
+    #remove whitespace
+    rx_whitespace = re.compile( '\\n+', re.M | re.S)
 
-    return regex.sub(
-        '',
-        text
-    )
+    text = rx_comments.sub('', text)
+    text = rx_whitespace.sub('\n', text)
+
+    return text

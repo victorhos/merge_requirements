@@ -21,17 +21,18 @@ class ManageFile(object):
 
         try:
 
-            path_file = '{}{}'.format(CURRENT_DIRECTORY, file)
-            return open(file, 'r')
+            path_file = '{}/{}'.format(CURRENT_DIRECTORY, file)
+            f = open(file, 'r').read()
+
+            return f
 
         except Exception as e:
             return logging.error(e)
 
     def see(self):
-        print(self.file_merged)
-        print(self.first_file)
-        print(self.second_file)
-        import ipdb; ipdb.set_trace()
+        print(remove_comments(self.file_merged))
+        print(remove_comments(self.first_file))
+        print(remove_comments(self.second_file))
 
 class Merge(object):
 
