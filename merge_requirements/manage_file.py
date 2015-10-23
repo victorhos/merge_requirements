@@ -47,8 +47,14 @@ class ManageFile(object):
         return dict(lib_list)
 
     def see(self):
+
+        print('------------ file_merged ------------')
         print(self.file_merged)
+
+        print('------------ first_file ------------')
         print(self.first_file)
+
+        print('------------ second_file ------------')
         print(self.second_file)
 
 class Merge(object):
@@ -57,6 +63,4 @@ class Merge(object):
 
         self.menage_file = mf
 
-    def open_files():
-
-        self.mf
+    def 

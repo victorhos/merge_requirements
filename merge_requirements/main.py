@@ -25,13 +25,15 @@ args = parser.parse_args()
 
 def main():
 
-    files = ManageFile(
+    mf = ManageFile(
         args.file_merged,
         args.first_file,
         args.second_file
     )
 
-    files.see()
+    mf.see()
+
+    mg = Merge(mf)
 
 if __name__ == '__main__':
     main()
