@@ -30,12 +30,21 @@ class ManageFile(object):
             return logging.error(e)
 
     def modify_to_dict(self, file):
-        text = remove_comments(self.open_file(file))
-        import ipdb; ipdb.set_trace()
 
-        return dict(
-            (l, v) for l, v in (item.split('==') for item in text.split('\n'))
-        )
+        text = remove_comments(self.open_file(file))
+
+        lib_list = []
+
+        for item in text.split('\n'):
+
+            item = item.split('==')
+
+            if len(item) == 1:
+                item.append('')
+
+            lib_list.append(tuple(item))
+
+        return dict(lib_list)
 
     def see(self):
         print(self.file_merged)
