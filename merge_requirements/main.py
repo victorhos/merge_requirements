@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 import argparse
-from manage_file import ManageFile
+from manage_file import ManageFile, Merge
 
 parser = argparse.ArgumentParser()
 
@@ -34,6 +34,7 @@ def main():
     mf.see()
 
     mg = Merge(mf)
+    mg.generate_requirements_txt()
 
 if __name__ == '__main__':
     main()
