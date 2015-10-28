@@ -63,4 +63,5 @@ class Merge(object):
 
         self.menage_file = mf
 
-    def 
+    def a():
+        pass

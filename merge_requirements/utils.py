@@ -14,3 +14,7 @@ def remove_comments(text):
     text = rx_comments.sub('', text)
 
     return text
+
+def merge_dict(base_dict, m_dict):
+
+    for 
