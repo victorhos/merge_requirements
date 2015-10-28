@@ -13,9 +13,9 @@ class ManageFile(object):
 
     def __init__(self, fm, ff, sf):
 
-        self.file_merged = remove_comments(self.open_file(fm))
-        self.first_file = self.modify_to_dict(ff)
-        self.second_file = self.modify_to_dict(sf)
+        self.file_merged = fm
+        self.first_file = self.generate_dict_libs(ff)
+        self.second_file = self.generate_dict_libs(sf)
 
     def open_file(self, file):
 
@@ -29,7 +29,7 @@ class ManageFile(object):
         except Exception as e:
             return logging.error(e)
 
-    def modify_to_dict(self, file):
+    def generate_dict_libs(self, file):
 
         text = remove_comments(self.open_file(file))
 
@@ -61,7 +61,38 @@ class Merge(object):
 
     def __init__(self, mf):
 
-        self.menage_file = mf
+        self.manage_file = mf
 
+    def merge_dict_libs(self):
+
+        dict_libs = {}
+        import pdb; pdb.set_trace()
+
+    def generate_requirements_txt(self):
+
+        return self.merge_dict_libs()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
     def a():
         pass
+=======
+>>>>>>> 09862374bb97786c02a881aa9146f49833b36606

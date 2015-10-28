@@ -10,7 +10,6 @@ class TestUtils(TestCase):
     @patch('package.module.attribute', sentinel.attribute)
     def test_remove_comments(self):
 
-        mock = MagicMock(return_value=sentinel.file_handle)
         with patch('builtins.open', mock):
             handle = open('filename', 'r')
 
