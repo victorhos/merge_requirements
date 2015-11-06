@@ -89,10 +89,3 @@ class Merge(object):
 
 
 
-
-
-<<<<<<< HEAD
-    def a():
-        pass
-=======
->>>>>>> 09862374bb97786c02a881aa9146f49833b36606
