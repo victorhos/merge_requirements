@@ -41,17 +41,19 @@ class TestUtils(TestCase):
         res_dict = merge_dict(bdict, mdict)
 
         merged_dict = {
-            'CherryPy': '3.2.4',
             'Django': '1.4.14',
+            'MarkupSafe': '0.18',
             'MySQL-python': '1.2.3',
             'Pillow': '2.1.0',
-            'MarkupSafe': '0.18',
-            'SQLAlchemy': '0.5.8'
+            'SQLAlchemy': '0.5.8',
+            'CherryPy': '3.2.4'
         }
 
-        import ipdb; ipdb.set_trace()
-
-        self.assertDictEqual(merge_dict(bdict, mdict), merged_dict)
+        self.assertDictEqual(
+            merge_dict(bdict, mdict),
+            merged_dict,
+            'test_merge_dict'
+        )
 
 if __name__ == '__main__':
     unittest.main()
