@@ -31,8 +31,6 @@ def main():
         args.second_file
     )
 
-    mf.see()
-
     mg = Merge(mf)
     mg.generate_requirements_txt()
 

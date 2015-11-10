@@ -4,7 +4,7 @@
 import sys
 import os
 import logging
-from utils import remove_comments
+from utils import remove_comments, merge_dict
 
 CURRENT_DIRECTORY = os.getcwd()
 DIR = os.path.dirname(os.path.realpath(__file__))
@@ -62,30 +62,25 @@ class Merge(object):
     def __init__(self, mf):
 
         self.manage_file = mf
+        self.dict_libs = {}
+
+        self.merge_dict_libs()
 
     def merge_dict_libs(self):
 
-        dict_libs = {}
-        import pdb; pdb.set_trace()
+        self.dict_libs = merge_dict(
+            self.manage_file.first_file,
+            self.manage_file.second_file
+        )
 
     def generate_requirements_txt(self):
 
-        return self.merge_dict_libs()
+        txt = ''.join(
+          '{}=={}\n'.format(key, value) for key, value in self.dict_libs.items()
+        )
 
+        f = open('requirements-merged.txt', 'x')
+        f.write(txt)
+        f.close()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        print('create file requirements-merged.txt')

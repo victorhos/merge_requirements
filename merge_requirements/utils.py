@@ -16,6 +16,7 @@ def remove_comments(text):
     return text
 
 def merge_dict(base_dict, m_dict):
+
     base_dict = dict(base_dict)
 
     for key_item in m_dict:
