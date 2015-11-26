@@ -11,9 +11,8 @@ DIR = os.path.dirname(os.path.realpath(__file__))
 
 class ManageFile(object):
 
-    def __init__(self, fm, ff, sf):
+    def __init__(self, ff, sf):
 
-        self.file_merged = fm
         self.first_file = self.generate_dict_libs(ff)
         self.second_file = self.generate_dict_libs(sf)
 
@@ -46,10 +45,7 @@ class ManageFile(object):
 
         return dict(lib_list)
 
-    def see(self):
-
-        print('------------ file_merged ------------')
-        print(self.file_merged)
+    def show(self):
 
         print('------------ first_file ------------')
         print(self.first_file)
@@ -75,12 +71,25 @@ class Merge(object):
 
     def generate_requirements_txt(self):
 
-        txt = ''.join(
-          '{}=={}\n'.format(key, value) for key, value in self.dict_libs.items()
-        )
+        txt = ''
 
-        f = open('requirements-merged.txt', 'x')
+        for key, value in self.dict_libs.items():
+            if len(value) > 0:
+                txt += ''.join('{}=={}\n'.format(key, value))
+            else:
+                txt += ''.join('{}\n'.format(key))
+
+
+        file_path = './requirements-merged.txt'
+        count = 0
+
+        while os.path.exists(file_path):
+
+            count += 1
+            file_path = './requirements-merged({}).txt'.format(count)
+
+        f = open(file_path, 'x')
         f.write(txt)
         f.close()
 
-        print('create file requirements-merged.txt')
+        print('create new file {}'.format(file_path))
