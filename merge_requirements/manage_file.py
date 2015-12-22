@@ -4,7 +4,7 @@
 import sys
 import os
 import logging
-from utils import remove_comments, merge_dict
+from merge_requirements.utils import remove_comments, merge_dict
 
 CURRENT_DIRECTORY = os.getcwd()
 DIR = os.path.dirname(os.path.realpath(__file__))
