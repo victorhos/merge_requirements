@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='merge-requirements',
-    version='0.2',
+    version='0.3',
     keywords=['merge requirements'],
     url='https://github.com/victorhos/merge_requirements',
     license='MIT',
