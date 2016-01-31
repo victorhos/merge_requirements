@@ -88,7 +88,8 @@ class Merge(object):
             count += 1
             file_path = './requirements-merged({}).txt'.format(count)
 
-        f = open(file_path, 'x')
+        mode = 'wx' if sys.version_info[0] < 3 else 'x'
+        f = open(file_path, mode)
         f.write(txt)
         f.close()
 
