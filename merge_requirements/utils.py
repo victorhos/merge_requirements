@@ -2,6 +2,8 @@
 # encoding: utf-8
 
 import re
+import sys
+from packaging.version import parse, InvalidVersion
 
 def remove_comments(text):
 
@@ -15,16 +17,33 @@ def remove_comments(text):
 
     return text
 
-def merge_dict(base_dict, m_dict):
+def merge_dict(l_dict, r_dict):
 
-    base_dict = dict(base_dict)
+    new_dict = dict()
+    error_count = 0
 
-    for key_item in m_dict:
+    # merge the keys into a unique list/set
+    all_keys = set(list(l_dict.keys()) + list(r_dict.keys()))
 
-        if key_item in base_dict:
-            if base_dict.get(key_item) < m_dict.get(key_item):
-                base_dict[key_item] = m_dict[key_item]
+    for key in all_keys:
+        if key in l_dict and key not in r_dict:
+            new_dict[key] = l_dict[key]
+        elif key not in l_dict and key in r_dict:
+            new_dict[key] = r_dict[key]
         else:
-            base_dict[key_item] = m_dict[key_item]
+            try:
+                l_version = parse(l_dict[key])
+                r_version = parse(r_dict[key])
+                if l_version <= r_version:
+                    new_dict[key] = r_dict[key]
+                else:
+                    new_dict[key] = l_dict[key]
 
-    return base_dict
+            except InvalidVersion as err:
+                error_count = error_count+1
+                print('WARN: Unable to merge {0}, value "{1}" vs "{2}"'.format(
+                    key_item, l_dict[key], r_dict[key]
+                ), file=sys.stderr)
+                continue
+
+    return (new_dict, error_count)

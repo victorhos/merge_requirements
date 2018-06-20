@@ -64,7 +64,7 @@ class Merge(object):
 
     def merge_dict_libs(self):
 
-        self.dict_libs = merge_dict(
+        (self.dict_libs, self.error_count) = merge_dict(
             self.manage_file.first_file,
             self.manage_file.second_file
         )
@@ -94,3 +94,6 @@ class Merge(object):
         f.close()
 
         print('create new file {}'.format(file_path))
+        if self.error_count > 0:
+            print('WARN: {} values failed to merge.'.format(self.error_count), file=sys.stderr)
+            sys.exit(1)
