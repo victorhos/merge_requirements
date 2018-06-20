@@ -14,6 +14,7 @@ setup(
     description='simple lib for organize two requirements.txt in a unique requirements.txt file',
     packages=['merge_requirements'],
     scripts=['scripts/merge_requirements'],
+    install_requires=['packaging'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: MIT License',
