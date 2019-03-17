@@ -9,9 +9,9 @@ class TestUtils(TestCase):
 
     def test_remove_comments(self):
 
-        text_file = '#COMENTARIOS\nCherryPy==3.2.4\nDjango==1.4.13\nIPTCInfo==1.9.5-6\nIon==0.6.4.2\n#COMENTARIO2\nJinja2==2.7\nMarkupSafe==0.18\nMySQL-python==1.2.3\nPIL==1.1.7-1\nPillow==2.1.0\nRoutes==2.0\nSQLAlchemy==0.5.8\nSouth==0.7.3\n'
+        text_file = '#COMENTARIOS\nCherryPy==3.2.4\nDjango==2.1.7\nIPTCInfo==1.9.5-6\nIon==0.6.4.2\n#COMENTARIO2\nJinja2==2.7\nMarkupSafe==0.18\nMySQL-python==1.2.3\nPIL==1.1.7-1\nPillow==2.1.0\nRoutes==2.0\nSQLAlchemy==0.5.8\nSouth==0.7.3\n' # noqa
 
-        expected_text_file = 'CherryPy==3.2.4\nDjango==1.4.13\nIPTCInfo==1.9.5-6\nIon==0.6.4.2\nJinja2==2.7\nMarkupSafe==0.18\nMySQL-python==1.2.3\nPIL==1.1.7-1\nPillow==2.1.0\nRoutes==2.0\nSQLAlchemy==0.5.8\nSouth==0.7.3'
+        expected_text_file = 'CherryPy==3.2.4\nDjango==2.1.7\nIPTCInfo==1.9.5-6\nIon==0.6.4.2\nJinja2==2.7\nMarkupSafe==0.18\nMySQL-python==1.2.3\nPIL==1.1.7-1\nPillow==2.1.0\nRoutes==2.0\nSQLAlchemy==0.5.8\nSouth==0.7.3' # noqa
 
         self.assertEqual(
             remove_comments(text_file),

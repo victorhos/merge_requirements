@@ -5,7 +5,7 @@ simple lib for organize two requirements.txt in a unique requirements.txt file
 ### Example:
 
 cat requirements_1.txt
-gunicorn==0.12.2
+gunicorn==19.9.0
 python-memcached==1.47
 globocore==4.11.1
 alf==0.4.2
@@ -21,7 +21,7 @@ create new file ./requirements-merged.txt
 
 cat requirements-merged.txt
 Django==1.4.13
-gunicorn==0.12.2
+gunicorn==19.9.0
 globocore==4.16.13
 alf==0.4.2
 python-memcached==1.47
