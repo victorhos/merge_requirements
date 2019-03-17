@@ -1,12 +1,10 @@
 # merge-requirements
 
-simple lib for organize two requirements.txt in a unique requirements.txt file
+simple lib to organize two requirements.txt into a single file.
 
 ### Example:
 
-```script
-pip install merge-requirements
-
+```bash
 cat requirements_edgcore.txt
 gunicorn==19.9.0
 python-memcached==1.47
@@ -39,5 +37,4 @@ html5lib==0.95
 alf==0.4.2
 python-memcached==1.47
 IPTCInfo==1.9.5-6
-
 ```
