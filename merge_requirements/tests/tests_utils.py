@@ -38,8 +38,6 @@ class TestUtils(TestCase):
             'SQLAlchemy': '0.5.8'
         }
 
-        res_dict = merge_dict(bdict, mdict)
-
         merged_dict = {
             'Django': '1.4.14',
             'MarkupSafe': '0.18',

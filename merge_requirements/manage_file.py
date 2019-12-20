@@ -19,14 +19,10 @@ class ManageFile(object):
     def open_file(self, file):
 
         try:
-
-            path_file = '{}/{}'.format(CURRENT_DIRECTORY, file)
-            f = open(file, 'r').read()
-
-            return f
-
+            return open(file, 'r').read()
         except Exception as e:
-            return logging.error(e)
+            logging.error(e)
+            raise
 
     def generate_dict_libs(self, file):
 
@@ -74,7 +70,7 @@ class Merge(object):
         txt = ''
 
         for key, value in self.dict_libs.items():
-            if len(value) > 0:
+            if len(value):
                 txt += ''.join('{}=={}\n'.format(key, value))
             else:
                 txt += ''.join('{}\n'.format(key))
