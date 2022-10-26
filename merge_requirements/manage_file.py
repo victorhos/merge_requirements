@@ -1,23 +1,23 @@
-#!/usr/bin/env python
-# encoding: utf-8
+import __future__
 
 import sys
 import os
 import logging
-from merge_requirements.utils import remove_comments, merge_dict
+
+from merge_requirements.utils import clean_text, merge_dict
 
 CURRENT_DIRECTORY = os.getcwd()
 DIR = os.path.dirname(os.path.realpath(__file__))
+FILE_PATH = './requirements-merged.txt'
+
 
 class ManageFile(object):
 
-    def __init__(self, ff, sf):
-
-        self.first_file = self.generate_dict_libs(ff)
-        self.second_file = self.generate_dict_libs(sf)
+    def __init__(self, first_file, second_file):
+        self.first_file = self.generate_dict_libs(file=first_file)
+        self.second_file = self.generate_dict_libs(file=second_file)
 
     def open_file(self, file):
-
         try:
             return open(file, 'r').read()
         except Exception as e:
@@ -26,14 +26,12 @@ class ManageFile(object):
 
     def generate_dict_libs(self, file):
 
-        text = remove_comments(self.open_file(file))
+        text = clean_text(self.open_file(file))
 
         lib_list = []
 
         for item in text.split('\n'):
-
             item = item.split('==')
-
             if len(item) == 1:
                 item.append('')
 
@@ -49,24 +47,20 @@ class ManageFile(object):
         print('------------ second_file ------------')
         print(self.second_file)
 
-class Merge(object):
 
-    def __init__(self, mf):
-
-        self.manage_file = mf
+class Merge:
+    def __init__(self, manage_file):
+        self.manage_file = manage_file
         self.dict_libs = {}
-
         self.merge_dict_libs()
 
     def merge_dict_libs(self):
-
         (self.dict_libs, self.error_count) = merge_dict(
             self.manage_file.first_file,
             self.manage_file.second_file
         )
 
     def generate_requirements_txt(self):
-
         txt = ''
 
         for key, value in self.dict_libs.items():
@@ -75,21 +69,19 @@ class Merge(object):
             else:
                 txt += ''.join('{}\n'.format(key))
 
-
-        file_path = './requirements-merged.txt'
         count = 0
-
         while os.path.exists(file_path):
-
             count += 1
             file_path = './requirements-merged({}).txt'.format(count)
 
         mode = 'wx' if sys.version_info[0] < 3 else 'x'
-        f = open(file_path, mode)
-        f.write(txt)
-        f.close()
+
+        file = open(FILE_PATH, mode)
+        file.write(txt)
+        file.close()
 
         print('create new file {}'.format(file_path))
+
         if self.error_count > 0:
             print('WARN: {} values failed to merge.'.format(self.error_count), file=sys.stderr)
             sys.exit(1)

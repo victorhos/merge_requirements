@@ -1,24 +1,31 @@
-#!/usr/bin/env python
-# encoding: utf-8
-
 import re
 import sys
+
 from packaging.version import parse, InvalidVersion
 
-def remove_comments(text):
 
-    #remove comments
-    rx_comments = re.compile( '#+.*?\\n|^\\n|\\n$', re.M | re.S)
-    #remove whitespace
-    rx_whitespace = re.compile( '\\n+', re.M | re.S)
+def clean_text(text):
+    """
+    The function remove commented line and white spaces in text
 
-    text = rx_whitespace.sub('\n', text)
-    text = rx_comments.sub('', text)
+    Parameters:
+        text(string): String to be formatted
+    Returns:
+        string: String formatted based on implemented regex
+    """
+    regex_base = [
+        {'replace': '', 'regex': '#+.*?\\n|^\\n|\\n$'},
+        {'replace': '\n', 'regex': '\\n+'}
+    ]
+
+    for item in regex_base:
+        compile_re = re.compile(item['regex'], re.M | re.S)
+        text = compile_re.sub(item['replace'], text)
 
     return text
 
-def merge_dict(l_dict, r_dict):
 
+def merge_dict(l_dict, r_dict):
     new_dict = dict()
     error_count = 0
 
@@ -41,9 +48,14 @@ def merge_dict(l_dict, r_dict):
 
             except InvalidVersion:
                 error_count = error_count+1
-                print('WARN: Unable to merge {0}, value "{1}" vs "{2}"'.format(
-                    key_item, l_dict[key], r_dict[key]
-                ), file=sys.stderr)
+                print(
+                    'WARN: Unable to merge {0}, value "{1}" vs "{2}"'.format(
+                        key_item,
+                        l_dict[key],
+                        r_dict[key]
+                    ),
+                    file=sys.stderr
+                )
                 continue
 
     return (new_dict, error_count)

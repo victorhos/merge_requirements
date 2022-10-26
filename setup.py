@@ -1,12 +1,18 @@
-#!/usr/bin/env python
-# encoding: utf-8
-
 from setuptools import setup
+
+classifiers = [
+    'Development Status :: 5 - Production/Stable',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 2.7'
+    'Topic :: Software Development :: Libraries',
+    'Topic :: Utilities',
+]
 
 setup(
     name='merge-requirements',
-    version='0.6',
-    keywords=['merge requirements'],
+    version='1.0',
+    keywords=['merge requirements', 'merge dependencies'],
     url='https://github.com/victorhos/merge_requirements',
     license='MIT',
     author='victorhos',
@@ -15,10 +21,5 @@ setup(
     packages=['merge_requirements'],
     scripts=['scripts/merge_requirements'],
     install_requires=['packaging'],
-    classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 2.7'
-    ]
+    classifiers=classifiers
 )
